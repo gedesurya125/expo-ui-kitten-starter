@@ -1,7 +1,6 @@
-import * as eva from "@eva-design/eva";
-import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
+import * as eva from '@eva-design/eva';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   ApplicationProvider,
   Drawer,
@@ -9,24 +8,25 @@ import {
   Layout,
   Text,
   IndexPath,
-} from "@ui-kitten/components";
+} from '@ui-kitten/components';
+import React from 'react';
 
 const { Navigator, Screen } = createDrawerNavigator();
 
 const HomeScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text category="h1">HOME</Text>
   </Layout>
 );
 
 const UsersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text category="h1">USERS</Text>
   </Layout>
 );
 
 const OrdersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text category="h1">ORDERS</Text>
   </Layout>
 );
