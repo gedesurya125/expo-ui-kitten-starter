@@ -24,20 +24,9 @@ import {
 } from 'react-native';
 
 import { NavigationBar } from './components';
+import { HomeScreen } from './screens/homeScreen/HomeScreen';
 
 const { Navigator, Screen } = createDrawerNavigator();
-
-const HomeScreen = () => (
-  <Layout
-    style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Text category="h1">HOMEEEEE</Text>
-  </Layout>
-);
 
 const UsersScreen = () => (
   <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -51,36 +40,38 @@ const OrdersScreen = () => (
   </Layout>
 );
 
-const Header = (props) => (
-  <>
-    <ImageBackground
-      style={{
-        ...props.style,
-        // height: 128,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 30,
-      }}
-      source={require('./assets/rm222-mind-16.jpg')}
-    >
-      <Image
-        source={require('./assets/peoplePict.jpeg')}
+const Header = (props) => {
+  return (
+    <>
+      <ImageBackground
         style={{
-          width: 100,
-          height: 100,
-          borderRadius: 100,
+          ...props.style,
+          // height: 128,
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: 30,
         }}
-      />
-      <Text appearance="alternative" category="h6">
-        Sales Name
-      </Text>
-      <Text appearance="alternative" category="p2">
-        sales@example.com
-      </Text>
-    </ImageBackground>
-    <Divider />
-  </>
-);
+        source={require('./assets/rm222-mind-16.jpg')}
+      >
+        <Image
+          source={require('./assets/peoplePict.jpeg')}
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 100,
+          }}
+        />
+        <Text appearance="alternative" category="h6">
+          Sales Name
+        </Text>
+        <Text appearance="alternative" category="p2">
+          sales@example.com
+        </Text>
+      </ImageBackground>
+      <Divider />
+    </>
+  );
+};
 
 const DrawerContent = ({ navigation, state }) => (
   <Drawer
