@@ -10,10 +10,18 @@ import {
   Text,
   IndexPath,
   IconRegistry,
+  Divider,
 } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import React from 'react';
-import { Text as RnText, SafeAreaView, StatusBar, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text as RnText,
+  SafeAreaView,
+  StatusBar,
+  View,
+} from 'react-native';
 
 import { NavigationBar } from './components';
 
@@ -43,8 +51,40 @@ const OrdersScreen = () => (
   </Layout>
 );
 
+const Header = (props) => (
+  <>
+    <ImageBackground
+      style={{
+        ...props.style,
+        // height: 128,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 30,
+      }}
+      source={require('./assets/rm222-mind-16.jpg')}
+    >
+      <Image
+        source={require('./assets/peoplePict.jpeg')}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 100,
+        }}
+      />
+      <Text appearance="alternative" category="h6">
+        Sales Name
+      </Text>
+      <Text appearance="alternative" category="p2">
+        sales@example.com
+      </Text>
+    </ImageBackground>
+    <Divider />
+  </>
+);
+
 const DrawerContent = ({ navigation, state }) => (
   <Drawer
+    header={Header}
     selectedIndex={new IndexPath(state.index)}
     onSelect={(index) => navigation.navigate(state.routeNames[index.row])}
   >
@@ -53,17 +93,6 @@ const DrawerContent = ({ navigation, state }) => (
     <DrawerItem title="Orders" />
   </Drawer>
 );
-
-const NavigationHeader = ({ navigation, route, options }) => {
-  const title = getHeaderTitle(options, route.name);
-  return (
-    <View style={options.headerStyle}>
-      <Text style={{ color: 'black', ...options.headerStyle }} category="p1">
-        Hello{title}
-      </Text>
-    </View>
-  );
-};
 
 export const DrawerNavigator = () => (
   <Navigator
@@ -84,6 +113,7 @@ const AppNavigator = () => (
     <DrawerNavigator />
   </NavigationContainer>
 );
+
 export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
