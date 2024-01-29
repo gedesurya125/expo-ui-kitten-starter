@@ -1,29 +1,21 @@
 /* eslint-disable import/order */
-import { Card, Layout, Text } from '@ui-kitten/components';
+import { Card, Text } from '@ui-kitten/components';
 import React from 'react';
 import { ImageBackground } from 'react-native';
 
-import { CardStatuses, CardWithHeaderAndFooter } from '../../components';
-import { ScrollView } from 'react-native-gesture-handler';
+import {
+  CardStatuses,
+  CardWithHeaderAndFooter,
+  DefaultLayout,
+} from '../../components';
 
 export const HomeScreen = () => (
-  <Layout
-    style={{
-      flex: 1,
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingRight: 15,
-      paddingLeft: 15,
-    }}
-  >
-    <ScrollView>
-      <CardOne />
-      <CardWithHeaderAndFooter />
-      <CardStatuses />
-      <Text category="h1">HOMEEEEE</Text>
-    </ScrollView>
-  </Layout>
+  <DefaultLayout>
+    <CardOne />
+    <CardWithHeaderAndFooter />
+    <CardStatuses />
+    <Text category="h1">HOMEEEEE</Text>
+  </DefaultLayout>
 );
 
 const CardOne = () => {
