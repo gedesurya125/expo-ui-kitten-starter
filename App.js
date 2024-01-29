@@ -6,7 +6,6 @@ import {
   ApplicationProvider,
   Drawer,
   DrawerItem,
-  Layout,
   Text,
   IndexPath,
   IconRegistry,
@@ -25,19 +24,53 @@ import {
 
 import { NavigationBar } from './components';
 import { HomeScreen } from './screens/homeScreen/HomeScreen';
+import { UsersScreen } from './screens/userScreen/UserScreen';
+import { OrdersScreen } from './screens/OrderScreen';
 
 const { Navigator, Screen } = createDrawerNavigator();
 
-const UsersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text category="h1">USERS</Text>
-  </Layout>
+export default function App() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva.dark}>
+        <AppNavigator />
+      </ApplicationProvider>
+      <StatusBar />
+    </SafeAreaView>
+  );
+}
+
+const AppNavigator = () => (
+  <NavigationContainer>
+    <DrawerNavigator />
+  </NavigationContainer>
 );
 
-const OrdersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text category="h1">ORDERS</Text>
-  </Layout>
+const DrawerContent = ({ navigation, state }) => (
+  <Drawer
+    header={Header}
+    selectedIndex={new IndexPath(state.index)}
+    onSelect={(index) => navigation.navigate(state.routeNames[index.row])}
+  >
+    <DrawerItem title="Home" />
+    <DrawerItem title="Users" />
+    <DrawerItem title="Orders" />
+  </Drawer>
+);
+
+export const DrawerNavigator = () => (
+  <Navigator
+    drawerContent={(props) => <DrawerContent {...props} />}
+    screenOptions={{
+      headerShown: true,
+      header: NavigationBar,
+    }}
+  >
+    <Screen name="Home" component={HomeScreen} />
+    <Screen name="Users" component={UsersScreen} />
+    <Screen name="Orders" component={OrdersScreen} />
+  </Navigator>
 );
 
 const Header = (props) => {
@@ -72,48 +105,3 @@ const Header = (props) => {
     </>
   );
 };
-
-const DrawerContent = ({ navigation, state }) => (
-  <Drawer
-    header={Header}
-    selectedIndex={new IndexPath(state.index)}
-    onSelect={(index) => navigation.navigate(state.routeNames[index.row])}
-  >
-    <DrawerItem title="Home" />
-    <DrawerItem title="Users" />
-    <DrawerItem title="Orders" />
-  </Drawer>
-);
-
-export const DrawerNavigator = () => (
-  <Navigator
-    drawerContent={(props) => <DrawerContent {...props} />}
-    screenOptions={{
-      headerShown: true,
-      header: NavigationBar,
-    }}
-  >
-    <Screen name="Home" component={HomeScreen} />
-    <Screen name="Users" component={UsersScreen} />
-    <Screen name="Orders" component={OrdersScreen} />
-  </Navigator>
-);
-
-const AppNavigator = () => (
-  <NavigationContainer>
-    <DrawerNavigator />
-  </NavigationContainer>
-);
-
-export default function App() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
-        {/* <HomeScreen /> */}
-        <AppNavigator />
-      </ApplicationProvider>
-      <StatusBar />
-    </SafeAreaView>
-  );
-}
