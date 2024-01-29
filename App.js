@@ -23,9 +23,13 @@ import {
 } from 'react-native';
 
 import { NavigationBar } from './components';
-import { HomeScreen } from './screens/homeScreen/HomeScreen';
-import { UsersScreen } from './screens/userScreen/UserScreen';
-import { OrdersScreen } from './screens/OrderScreen';
+
+import {
+  HomeScreen,
+  UsersScreen,
+  OrdersScreen,
+  WelcomeScreen,
+} from './screens';
 
 const { Navigator, Screen } = createDrawerNavigator();
 
@@ -56,6 +60,7 @@ const DrawerContent = ({ navigation, state }) => (
     <DrawerItem title="Home" />
     <DrawerItem title="Users" />
     <DrawerItem title="Orders" />
+    <DrawerItem title="Quick Actions" />
   </Drawer>
 );
 
@@ -70,6 +75,7 @@ export const DrawerNavigator = () => (
     <Screen name="Home" component={HomeScreen} />
     <Screen name="Users" component={UsersScreen} />
     <Screen name="Orders" component={OrdersScreen} />
+    <Screen name="Quick Actions" component={WelcomeScreen} />
   </Navigator>
 );
 
