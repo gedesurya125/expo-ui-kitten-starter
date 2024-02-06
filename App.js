@@ -30,6 +30,7 @@ import {
   OrdersScreen,
   WelcomeScreen,
 } from './screens';
+import { default as mapping } from './evaDesign/mapping.json';
 
 const { Navigator, Screen } = createDrawerNavigator();
 
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      <ApplicationProvider {...eva} theme={eva.dark} customMapping={mapping}>
         <AppNavigator />
       </ApplicationProvider>
       <StatusBar />

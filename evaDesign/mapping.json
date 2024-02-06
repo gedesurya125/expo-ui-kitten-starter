@@ -1,0 +1,62 @@
+{
+  "components": {
+    "CircleButton": {
+      "meta": {
+        "parameters": {
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "borderRadius": {
+            "type": "number"
+          },
+          "backgroundColor": {
+            "type": "number"
+          }
+        },
+        "variantGroups": {
+          "shape": {
+            "rounded": {
+              "default": false
+            }
+          }
+        },
+        "states": {
+          "active": {
+            "default": false
+          }
+        },
+        "appearances": {
+          "filled": {
+            "default": true
+          }
+        }
+      },
+      "appearances": {
+        "filled": {
+          "mapping": {
+            "width": 64,
+            "height": 64,
+            "borderRadius": 32,
+            "backgroundColor": "color-primary-default",
+            "state": {
+              "active": {
+                "backgroundColor": "color-primary-active"
+              }
+            }
+          },
+
+          "variantGroups": {
+            "shape": {
+              "rounded": {
+                "borderRadius": 16
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
